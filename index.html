@@ -970,94 +970,88 @@
 
         function moveNoButton() {
 
-            /*
-                Her kaçışta küçülür.
-            */
+    // Her kaçışta biraz küçülür
+    const noScale = Math.max(
+        0.45,
+        1 - (noClicks * 0.045)
+    );
 
-            const noScale =
-                Math.max(
-                    0.35,
-                    1 - (noClicks * 0.055)
-                );
+    noBtn.style.position = "fixed";
 
+    // Önce küçült
+    noBtn.style.transform = `scale(${noScale})`;
 
-            noBtn.style.transform =
-                `scale(${noScale})`;
+    // Görünen yaklaşık boyut
+    const originalWidth = 140;
+    const originalHeight = 55;
 
+    const visibleWidth =
+        originalWidth * noScale;
 
-            /*
-                Buton artık
-                fixed konumda hareket ediyor.
-            */
+    const visibleHeight =
+        originalHeight * noScale;
 
-            noBtn.style.position =
-                "fixed";
+    // Kenarlardan güvenli boşluk
+    const margin = 20;
 
+    // Butonun gidebileceği alan
+    const maxX =
+        window.innerWidth -
+        visibleWidth -
+        margin;
 
-            const buttonWidth =
-                noBtn.offsetWidth;
+    const maxY =
+        window.innerHeight -
+        visibleHeight -
+        margin;
 
-            const buttonHeight =
-                noBtn.offsetHeight;
+    // Güvenli sınırlar
+    const minX = margin;
+    const minY = margin;
 
+    let x;
+    let y;
 
-            const maxX =
-                window.innerWidth -
-                buttonWidth -
-                15;
+    let attempts = 0;
 
+    do {
 
-            const maxY =
-                window.innerHeight -
-                buttonHeight -
-                15;
+        x =
+            minX +
+            Math.random() *
+            Math.max(1, maxX - minX);
 
+        y =
+            minY +
+            Math.random() *
+            Math.max(1, maxY - minY);
 
-            let x;
-            let y;
+        attempts++;
 
+    } while (
+        attempts < 30 &&
+        isInsideYesButton(
+            x,
+            y,
+            visibleWidth,
+            visibleHeight
+        )
+    );
 
-            /*
-                Evet butonunun
-                üzerine gelmemeye çalış.
-            */
+    // Kesinlikle ekran dışına çıkmasın
+    x = Math.max(
+        minX,
+        Math.min(x, maxX)
+    );
 
-            let attempts = 0;
+    y = Math.max(
+        minY,
+        Math.min(y, maxY)
+    );
 
-
-            do {
-
-                x =
-                    Math.random() *
-                    Math.max(maxX, 10);
-
-                y =
-                    Math.random() *
-                    Math.max(maxY, 10);
-
-                attempts++;
-
-            } while (
-
-                attempts < 30 &&
-
-                isInsideYesButton(
-                    x,
-                    y,
-                    buttonWidth,
-                    buttonHeight
-                )
-            );
-
-
-            noBtn.style.left =
-                x + "px";
-
-
-            noBtn.style.top =
-                y + "px";
-        }
-
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+}
 
 
         /* =========================
@@ -1065,35 +1059,31 @@
         ========================== */
 
         function isInsideYesButton(
-            x,
-            y,
-            width,
-            height
-        ) {
+    x,
+    y,
+    width,
+    height
+) {
 
-            const yesRect =
-                yesBtn.getBoundingClientRect();
+    const yesRect =
+        yesBtn.getBoundingClientRect();
 
+    const padding = 15;
 
-            const padding = 25;
+    return !(
+        x + width <
+        yesRect.left - padding ||
 
+        x >
+        yesRect.right + padding ||
 
-            return !(
-                x + width <
-                yesRect.left - padding ||
+        y + height <
+        yesRect.top - padding ||
 
-                x >
-                yesRect.right + padding ||
-
-                y + height <
-                yesRect.top - padding ||
-
-                y >
-                yesRect.bottom + padding
-            );
-        }
-
-
+        y >
+        yesRect.bottom + padding
+    );
+}
 
         /* =========================
            ARKA PLAN KALPLERİ
