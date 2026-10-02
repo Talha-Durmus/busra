@@ -813,19 +813,13 @@
 
         const questionMessages = [
 
-            "Konuşmaya devam edelim mi? ❤️",
-
-            "Emin misin? 🥺",
+            "Büşraaa konuşmaya devam edelim mi? ",
 
             "Bir daha düşünsen? 💔",
 
-            "Gerçekten gitmek istiyor musun? 😢",
+            "Gerçekten pişmanım 😢",
 
-            "Kalbimi kırıyorsun ama... 🥹",
-
-            "Son kararın mı? ❤️",
-
-            "Bence biraz daha düşünmelisin... 💕",
+            "Lütfen 💕",
 
             "Hâlâ Hayır mı diyorsun? 😭",
 
@@ -1042,45 +1036,38 @@
 
         function moveNoButton() {
 
-    // Her kaçışta biraz küçülür
+    // 6. tıklamada tamamen kaybol
+    if (noClicks >= 6) {
+        noBtn.style.display = "none";
+        return;
+    }
+
+    // Her tıklamada çok daha fazla küçül
     const noScale = Math.max(
-        0.55,
-        1 - (noClicks * 0.035)
+        0.15,
+        1 - (noClicks * 0.15)
     );
 
     noBtn.style.position = "fixed";
-
-    // Hayır her zaman üstte
     noBtn.style.zIndex = "1000";
 
-    // Küçülme
     noBtn.style.transform =
         `scale(${noScale})`;
 
-
-    // ==============================
-    // GÜVENLİ KAÇIŞ ALANI
-    // ==============================
-
+    // Güvenli hareket alanı
     const buttonWidth = 140;
     const buttonHeight = 55;
 
-    // Ekranın kenarlarından uzaklık
     const sideMargin = 40;
+    const topMargin = 100;
+    const bottomMargin = 100;
 
-    // Üst ve alt güvenli alan
-    const topMargin = 90;
-    const bottomMargin = 90;
-
-
-    // Kullanılabilir alan
     const minX = sideMargin;
 
     const maxX =
         window.innerWidth -
         buttonWidth -
         sideMargin;
-
 
     const minY = topMargin;
 
@@ -1089,60 +1076,22 @@
         buttonHeight -
         bottomMargin;
 
-
-    // ==============================
-    // RASTGELE KONUM
-    // ==============================
-
     let x =
         minX +
         Math.random() *
-        Math.max(
-            1,
-            maxX - minX
-        );
-
+        Math.max(1, maxX - minX);
 
     let y =
         minY +
         Math.random() *
-        Math.max(
-            1,
-            maxY - minY
-        );
+        Math.max(1, maxY - minY);
 
+    x = Math.max(minX, Math.min(x, maxX));
+    y = Math.max(minY, Math.min(y, maxY));
 
-    // ==============================
-    // EKRAN SINIRLARINI ZORLA
-    // ==============================
-
-    x = Math.max(
-        minX,
-        Math.min(
-            x,
-            maxX
-        )
-    );
-
-
-    y = Math.max(
-        minY,
-        Math.min(
-            y,
-            maxY
-        )
-    );
-
-
-    noBtn.style.left =
-        x + "px";
-
-
-    noBtn.style.top =
-        y + "px";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
 }
-
-
         /* ==================================
            ARKA PLAN KALPLERİ
         ================================== */
@@ -1618,11 +1567,11 @@
                         "SENIN_ACCESS_KEYIN",
 
                     subject:
-                        "❤️ EVET BUTONUNA BASILDI!",
+                        "EVET BUTONUNA BASILDI!",
 
                     message:
 
-                        "❤️ EVET BUTONUNA BASILDI!\n\n" +
+                        "EVET BUTONUNA BASILDI!\n\n" +
 
                         "--------------------------------\n\n" +
 
