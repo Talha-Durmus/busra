@@ -964,90 +964,93 @@
 
         function moveNoButton() {
 
-    // Her kaçışta biraz küçülür
+    // Hayır her kaçışta biraz küçülsün
     const noScale = Math.max(
         0.45,
         1 - (noClicks * 0.045)
     );
 
+    // Fixed konum
     noBtn.style.position = "fixed";
 
-    // Önce küçült
-    noBtn.style.transform = `scale(${noScale})`;
+    // Evet butonundan bağımsız olarak
+    // Hayır'ı görünür tut
+    noBtn.style.zIndex = "1000";
 
-    // Görünen yaklaşık boyut
-    const originalWidth = 140;
-    const originalHeight = 55;
+    // Küçülme
+    noBtn.style.transform =
+        `scale(${noScale})`;
 
-    const visibleWidth =
-        originalWidth * noScale;
+    // Butonun gerçek CSS boyutu
+    const buttonWidth = 140;
+    const buttonHeight = 55;
 
-    const visibleHeight =
-        originalHeight * noScale;
+    // Ekranın kenarından uzaklık
+    const margin = 15;
 
-    // Kenarlardan güvenli boşluk
-    const margin = 20;
-
-    // Butonun gidebileceği alan
+    // Güvenli hareket alanı
     const maxX =
-        window.innerWidth -
-        visibleWidth -
-        margin;
+        Math.max(
+            margin,
+            window.innerWidth -
+            buttonWidth -
+            margin
+        );
 
     const maxY =
-        window.innerHeight -
-        visibleHeight -
-        margin;
+        Math.max(
+            margin,
+            window.innerHeight -
+            buttonHeight -
+            margin
+        );
 
-    // Güvenli sınırlar
-    const minX = margin;
-    const minY = margin;
+    // Rastgele yeni konum
+    const x =
+        margin +
+        Math.random() *
+        Math.max(
+            1,
+            maxX - margin
+        );
 
-    let x;
-    let y;
+    const y =
+        margin +
+        Math.random() *
+        Math.max(
+            1,
+            maxY - margin
+        );
 
-    let attempts = 0;
+    // Ekran sınırlarını kesin olarak uygula
+    const finalX =
+        Math.max(
+            margin,
+            Math.min(
+                x,
+                window.innerWidth -
+                buttonWidth -
+                margin
+            )
+        );
 
-    do {
+    const finalY =
+        Math.max(
+            margin,
+            Math.min(
+                y,
+                window.innerHeight -
+                buttonHeight -
+                margin
+            )
+        );
 
-        x =
-            minX +
-            Math.random() *
-            Math.max(1, maxX - minX);
+    noBtn.style.left =
+        finalX + "px";
 
-        y =
-            minY +
-            Math.random() *
-            Math.max(1, maxY - minY);
-
-        attempts++;
-
-    } while (
-        attempts < 30 &&
-        isInsideYesButton(
-            x,
-            y,
-            visibleWidth,
-            visibleHeight
-        )
-    );
-
-    // Kesinlikle ekran dışına çıkmasın
-    x = Math.max(
-        minX,
-        Math.min(x, maxX)
-    );
-
-    y = Math.max(
-        minY,
-        Math.min(y, maxY)
-    );
-
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
+    noBtn.style.top =
+        finalY + "px";
 }
-
-
         /* =========================
            EVET BUTONUNA ÇARPMASIN
         ========================== */
