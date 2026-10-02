@@ -1042,147 +1042,105 @@
 
         function moveNoButton() {
 
+    // Her kaçışta biraz küçülür
+    const noScale = Math.max(
+        0.55,
+        1 - (noClicks * 0.035)
+    );
 
-            /*
-                Her kaçışta küçülür.
-            */
+    noBtn.style.position = "fixed";
 
-            const noScale =
-                Math.max(
-                    0.45,
-                    1 - (noClicks * 0.045)
-                );
+    // Hayır her zaman üstte
+    noBtn.style.zIndex = "1000";
 
-
-            /*
-                Fixed pozisyon.
-            */
-
-            noBtn.style.position =
-                "fixed";
+    // Küçülme
+    noBtn.style.transform =
+        `scale(${noScale})`;
 
 
-            /*
-                Hayır her zaman
-                Evet'in üzerinde.
-            */
+    // ==============================
+    // GÜVENLİ KAÇIŞ ALANI
+    // ==============================
 
-            noBtn.style.zIndex =
-                "1000";
+    const buttonWidth = 140;
+    const buttonHeight = 55;
 
+    // Ekranın kenarlarından uzaklık
+    const sideMargin = 40;
 
-            /*
-                Küçülme.
-            */
-
-            noBtn.style.transform =
-                `scale(${noScale})`;
+    // Üst ve alt güvenli alan
+    const topMargin = 90;
+    const bottomMargin = 90;
 
 
-            /*
-                CSS boyutu.
-            */
+    // Kullanılabilir alan
+    const minX = sideMargin;
 
-            const buttonWidth =
-                140;
-
-
-            const buttonHeight =
-                55;
+    const maxX =
+        window.innerWidth -
+        buttonWidth -
+        sideMargin;
 
 
-            /*
-                Ekran kenarından
-                güvenli mesafe.
-            */
+    const minY = topMargin;
 
-            const margin =
-                18;
-
-
-            /*
-                Ekranda kalabileceği
-                maksimum koordinatlar.
-            */
-
-            const maxX =
-                Math.max(
-                    margin,
-                    window.innerWidth -
-                    buttonWidth -
-                    margin
-                );
+    const maxY =
+        window.innerHeight -
+        buttonHeight -
+        bottomMargin;
 
 
-            const maxY =
-                Math.max(
-                    margin,
-                    window.innerHeight -
-                    buttonHeight -
-                    margin
-                );
+    // ==============================
+    // RASTGELE KONUM
+    // ==============================
+
+    let x =
+        minX +
+        Math.random() *
+        Math.max(
+            1,
+            maxX - minX
+        );
 
 
-            /*
-                Rastgele konum.
-            */
-
-            let x =
-                margin +
-                Math.random() *
-                Math.max(
-                    1,
-                    maxX - margin
-                );
+    let y =
+        minY +
+        Math.random() *
+        Math.max(
+            1,
+            maxY - minY
+        );
 
 
-            let y =
-                margin +
-                Math.random() *
-                Math.max(
-                    1,
-                    maxY - margin
-                );
+    // ==============================
+    // EKRAN SINIRLARINI ZORLA
+    // ==============================
+
+    x = Math.max(
+        minX,
+        Math.min(
+            x,
+            maxX
+        )
+    );
 
 
-            /*
-                Çok önemli:
-                Ekranın dışına çıkmayı
-                kesin olarak engelle.
-            */
-
-            x =
-                Math.max(
-                    margin,
-                    Math.min(
-                        x,
-                        window.innerWidth -
-                        buttonWidth -
-                        margin
-                    )
-                );
+    y = Math.max(
+        minY,
+        Math.min(
+            y,
+            maxY
+        )
+    );
 
 
-            y =
-                Math.max(
-                    margin,
-                    Math.min(
-                        y,
-                        window.innerHeight -
-                        buttonHeight -
-                        margin
-                    )
-                );
+    noBtn.style.left =
+        x + "px";
 
 
-            noBtn.style.left =
-                x + "px";
-
-
-            noBtn.style.top =
-                y + "px";
-        }
-
+    noBtn.style.top =
+        y + "px";
+}
 
 
         /* ==================================
