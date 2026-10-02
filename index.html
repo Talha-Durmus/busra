@@ -12,6 +12,7 @@
 
     <title>Bir Sorum Var ❤️</title>
 
+
     <style>
 
         * {
@@ -19,13 +20,18 @@
             -webkit-tap-highlight-color: transparent;
         }
 
+
         html,
         body {
+
             margin: 0;
             padding: 0;
+
             width: 100%;
             height: 100%;
+
             overflow: hidden;
+
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -33,6 +39,7 @@
                 Arial,
                 sans-serif;
         }
+
 
         body {
 
@@ -60,9 +67,9 @@
         }
 
 
-        /* =========================
-           ANA SAYFA
-        ========================= */
+        /* ==================================
+           GENEL SAYFA
+        ================================== */
 
         .page {
 
@@ -79,10 +86,6 @@
             position: relative;
 
             padding: 20px;
-
-            transition:
-                opacity 0.5s ease,
-                transform 0.5s ease;
         }
 
 
@@ -90,6 +93,10 @@
             display: none !important;
         }
 
+
+        /* ==================================
+           KART
+        ================================== */
 
         .card {
 
@@ -100,7 +107,7 @@
             border-radius: 30px;
 
             background:
-                rgba(255, 255, 255, 0.65);
+                rgba(255, 255, 255, 0.68);
 
             backdrop-filter:
                 blur(18px);
@@ -112,7 +119,8 @@
                 1px solid rgba(255, 255, 255, 0.8);
 
             box-shadow:
-                0 25px 70px rgba(123, 49, 83, 0.15);
+                0 25px 70px
+                rgba(123, 49, 83, 0.15);
 
             position: relative;
 
@@ -126,20 +134,28 @@
         @keyframes cardAppear {
 
             from {
+
                 opacity: 0;
+
                 transform:
                     translateY(25px)
                     scale(0.95);
             }
 
             to {
+
                 opacity: 1;
+
                 transform:
                     translateY(0)
                     scale(1);
             }
         }
 
+
+        /* ==================================
+           ANA KALP
+        ================================== */
 
         .heart-icon {
 
@@ -165,6 +181,10 @@
         }
 
 
+        /* ==================================
+           SORU
+        ================================== */
+
         #question {
 
             font-size:
@@ -177,7 +197,7 @@
 
             font-weight: 700;
 
-            min-height: 110px;
+            min-height: 115px;
 
             display: flex;
 
@@ -200,16 +220,15 @@
         }
 
 
-        /* =========================
+        /* ==================================
            BUTONLAR
-        ========================= */
+        ================================== */
 
         .buttons {
 
             display: flex;
 
             justify-content: center;
-
             align-items: center;
 
             gap: 18px;
@@ -236,6 +255,8 @@
 
             -webkit-user-select: none;
 
+            touch-action: manipulation;
+
             transition:
                 width 0.45s cubic-bezier(.2,.8,.2,1),
                 height 0.45s cubic-bezier(.2,.8,.2,1),
@@ -245,6 +266,10 @@
                 transform 0.25s ease;
         }
 
+
+        /* ==================================
+           EVET
+        ================================== */
 
         #yesBtn {
 
@@ -266,7 +291,8 @@
             border-radius: 999px;
 
             box-shadow:
-                0 10px 30px rgba(255, 23, 68, 0.28);
+                0 10px 30px
+                rgba(255, 23, 68, 0.28);
 
             position: relative;
 
@@ -279,7 +305,8 @@
         #yesBtn:hover {
 
             box-shadow:
-                0 15px 40px rgba(255, 23, 68, 0.38);
+                0 15px 40px
+                rgba(255, 23, 68, 0.38);
         }
 
 
@@ -290,6 +317,10 @@
         }
 
 
+        /* ==================================
+           HAYIR
+        ================================== */
+
         #noBtn {
 
             width: 140px;
@@ -297,7 +328,7 @@
             height: 55px;
 
             background:
-                rgba(255, 255, 255, 0.9);
+                rgba(255, 255, 255, 0.96);
 
             color: #555;
 
@@ -306,19 +337,20 @@
             border-radius: 999px;
 
             box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.08);
+                0 8px 25px
+                rgba(0, 0, 0, 0.12);
 
             position: relative;
 
-            z-index: 40;
+            z-index: 1000;
 
             white-space: nowrap;
         }
 
 
-        /* =========================
+        /* ==================================
            MESAJ EKRANI
-        ========================= */
+        ================================== */
 
         #messagePage {
 
@@ -357,12 +389,14 @@
 
             0%,
             100% {
+
                 transform:
                     scale(1)
                     rotate(0deg);
             }
 
             50% {
+
                 transform:
                     scale(1.15)
                     rotate(-5deg);
@@ -395,9 +429,9 @@
         }
 
 
-        /* =========================
+        /* ==================================
            ARKA PLAN KALPLERİ
-        ========================= */
+        ================================== */
 
         .floating-heart {
 
@@ -448,9 +482,9 @@
         }
 
 
-        /* =========================
+        /* ==================================
            KONFETİ
-        ========================= */
+        ================================== */
 
         .confetti {
 
@@ -459,7 +493,6 @@
             top: -25px;
 
             width: 10px;
-
             height: 16px;
 
             z-index: 9999;
@@ -495,9 +528,9 @@
         }
 
 
-        /* =========================
+        /* ==================================
            KALP PATLAMASI
-        ========================= */
+        ================================== */
 
         .explosion-heart {
 
@@ -541,9 +574,9 @@
         }
 
 
-        /* =========================
+        /* ==================================
            PARILTI
-        ========================= */
+        ================================== */
 
         .sparkle {
 
@@ -556,7 +589,10 @@
             font-size: 20px;
 
             animation:
-                sparkleAnimation 1.2s ease-out forwards;
+                sparkleAnimation
+                1.2s
+                ease-out
+                forwards;
         }
 
 
@@ -589,9 +625,9 @@
         }
 
 
-        /* =========================
+        /* ==================================
            MOBİL
-        ========================= */
+        ================================== */
 
         @media (max-width: 600px) {
 
@@ -603,9 +639,12 @@
                 border-radius: 25px;
             }
 
+
             .heart-icon {
+
                 font-size: 48px;
             }
+
 
             #question {
 
@@ -615,10 +654,12 @@
                 min-height: 120px;
             }
 
+
             .buttons {
 
                 gap: 12px;
             }
+
 
             #yesBtn,
             #noBtn {
@@ -629,6 +670,7 @@
 
                 font-size: 17px;
             }
+
 
             .message-card {
 
@@ -645,9 +687,9 @@
 <body>
 
 
-    <!-- =========================
-         SORU EKRANI
-    ========================== -->
+    <!-- ==================================
+         SORU SAYFASI
+    ================================== -->
 
     <div
         id="questionPage"
@@ -672,6 +714,7 @@
                     Evet ❤️
                 </button>
 
+
                 <button id="noBtn">
                     Hayır
                 </button>
@@ -684,9 +727,9 @@
 
 
 
-    <!-- =========================
-         MESAJ EKRANI
-    ========================== -->
+    <!-- ==================================
+         MESAJ SAYFASI
+    ================================== -->
 
     <div
         id="messagePage"
@@ -706,6 +749,7 @@
 
 
             <div id="finalMessage">
+
                 <p>
                     İyi ki buradasın.
                 </p>
@@ -713,6 +757,7 @@
                 <p>
                     ❤️
                 </p>
+
             </div>
 
         </div>
@@ -724,29 +769,33 @@
     <script>
 
 
-        /* =========================
+        /* ==================================
            ELEMENTLER
-        ========================== */
+        ================================== */
 
         const questionPage =
             document.getElementById(
                 "questionPage"
             );
 
+
         const messagePage =
             document.getElementById(
                 "messagePage"
             );
+
 
         const yesBtn =
             document.getElementById(
                 "yesBtn"
             );
 
+
         const noBtn =
             document.getElementById(
                 "noBtn"
             );
+
 
         const question =
             document.getElementById(
@@ -758,21 +807,27 @@
 
 
 
-        /* =========================
+        /* ==================================
            SORU MESAJLARI
-        ========================== */
+        ================================== */
 
         const questionMessages = [
 
-            "Büşraaa konuşmaya devam edelim mi? ❤️",
+            "Konuşmaya devam edelim mi? ❤️",
 
-            "Lütfen kabul et 😭"
+            "Emin misin? 🥺",
 
             "Bir daha düşünsen? 💔",
 
-            "Kalbimi kırıyorsun ama...  🥹 😢" ,
+            "Gerçekten gitmek istiyor musun? 😢",
+
+            "Kalbimi kırıyorsun ama... 🥹",
+
+            "Son kararın mı? ❤️",
 
             "Bence biraz daha düşünmelisin... 💕",
+
+            "Hâlâ Hayır mı diyorsun? 😭",
 
             "Peki... ama Evet hâlâ burada ❤️",
 
@@ -784,9 +839,9 @@
 
 
 
-        /* =========================
+        /* ==================================
            SORUYU DEĞİŞTİR
-        ========================== */
+        ================================== */
 
         function changeQuestionText() {
 
@@ -807,6 +862,7 @@
                 question.textContent =
                     questionMessages[index];
 
+
                 question.classList.remove(
                     "question-changing"
                 );
@@ -816,25 +872,27 @@
 
 
 
-        /* =========================
+        /* ==================================
            EVET BUTONUNU BÜYÜT
-        ========================== */
+        ================================== */
 
         function growYesButton() {
 
+
             /*
-                İlk aşamalarda
+                İlk 8 tıklamada
                 küçük ve dengeli büyüme.
             */
 
-            if (noClicks < 7) {
+            if (noClicks < 8) {
 
                 const scale =
-                    1 + (noClicks * 0.11);
+                    1 + (noClicks * 0.09);
 
 
                 const width =
                     140 * scale;
+
 
                 const height =
                     55 * scale;
@@ -843,14 +901,15 @@
                 yesBtn.style.width =
                     width + "px";
 
+
                 yesBtn.style.height =
                     height + "px";
 
 
                 yesBtn.style.fontSize =
                     Math.min(
-                        18 + noClicks * 2,
-                        32
+                        18 + noClicks * 1.7,
+                        31
                     ) + "px";
 
 
@@ -860,24 +919,24 @@
 
 
             /*
-                7. tıklamadan sonra
-                ekran büyümesine yavaşça geç.
+                8. tıklamadan sonra
+                yavaşça büyümeye devam.
             */
 
-            if (noClicks >= 7) {
+            if (noClicks >= 8) {
 
                 const progress =
                     Math.min(
-                        (noClicks - 6) / 8,
+                        (noClicks - 7) / 12,
                         1
                     );
 
 
                 const width =
-                    250 +
+                    240 +
                     (
                         window.innerWidth * 1.2
-                        - 250
+                        - 240
                     ) * progress;
 
 
@@ -915,8 +974,8 @@
 
                 yesBtn.style.fontSize =
                     (
-                        32 +
-                        progress * 16
+                        31 +
+                        progress * 17
                     ) + "px";
 
 
@@ -925,19 +984,22 @@
                         20,
                         999 - progress * 700
                     ) + "px";
+
+
+                /*
+                    Evet ekranı kaplasa bile
+                    Hayır'ın üstünde kalmasını sağla.
+                */
+
+                yesBtn.style.zIndex = "50";
             }
 
 
             /*
-                Son aşamada
-                Hayır tamamen kaybolur.
+                Son aşama
             */
 
-            if (noClicks >= 14) {
-
-                noBtn.style.display =
-                    "none";
-
+            if (noClicks >= 20) {
 
                 yesBtn.style.width =
                     "110vw";
@@ -953,143 +1015,186 @@
 
                 yesBtn.style.fontSize =
                     "48px";
+
+
+                /*
+                    Hayır görünür kalacak.
+                */
+
+                noBtn.style.display =
+                    "block";
+
+
+                noBtn.style.zIndex =
+                    "1000";
+
+
+                noBtn.style.transform =
+                    "scale(0.45)";
             }
         }
 
 
 
-        /* =========================
+        /* ==================================
            HAYIR BUTONUNU KAÇIR
-        ========================== */
+        ================================== */
 
         function moveNoButton() {
 
-    // Hayır her kaçışta biraz küçülsün
-    const noScale = Math.max(
-        0.45,
-        1 - (noClicks * 0.045)
-    );
 
-    // Fixed konum
-    noBtn.style.position = "fixed";
+            /*
+                Her kaçışta küçülür.
+            */
 
-    // Evet butonundan bağımsız olarak
-    // Hayır'ı görünür tut
-    noBtn.style.zIndex = "1000";
+            const noScale =
+                Math.max(
+                    0.45,
+                    1 - (noClicks * 0.045)
+                );
 
-    // Küçülme
-    noBtn.style.transform =
-        `scale(${noScale})`;
 
-    // Butonun gerçek CSS boyutu
-    const buttonWidth = 140;
-    const buttonHeight = 55;
+            /*
+                Fixed pozisyon.
+            */
 
-    // Ekranın kenarından uzaklık
-    const margin = 15;
+            noBtn.style.position =
+                "fixed";
 
-    // Güvenli hareket alanı
-    const maxX =
-        Math.max(
-            margin,
-            window.innerWidth -
-            buttonWidth -
-            margin
-        );
 
-    const maxY =
-        Math.max(
-            margin,
-            window.innerHeight -
-            buttonHeight -
-            margin
-        );
+            /*
+                Hayır her zaman
+                Evet'in üzerinde.
+            */
 
-    // Rastgele yeni konum
-    const x =
-        margin +
-        Math.random() *
-        Math.max(
-            1,
-            maxX - margin
-        );
+            noBtn.style.zIndex =
+                "1000";
 
-    const y =
-        margin +
-        Math.random() *
-        Math.max(
-            1,
-            maxY - margin
-        );
 
-    // Ekran sınırlarını kesin olarak uygula
-    const finalX =
-        Math.max(
-            margin,
-            Math.min(
-                x,
-                window.innerWidth -
-                buttonWidth -
-                margin
-            )
-        );
+            /*
+                Küçülme.
+            */
 
-    const finalY =
-        Math.max(
-            margin,
-            Math.min(
-                y,
-                window.innerHeight -
-                buttonHeight -
-                margin
-            )
-        );
+            noBtn.style.transform =
+                `scale(${noScale})`;
 
-    noBtn.style.left =
-        finalX + "px";
 
-    noBtn.style.top =
-        finalY + "px";
-}
-        /* =========================
-           EVET BUTONUNA ÇARPMASIN
-        ========================== */
+            /*
+                CSS boyutu.
+            */
 
-        function isInsideYesButton(
-    x,
-    y,
-    width,
-    height
-) {
+            const buttonWidth =
+                140;
 
-    const yesRect =
-        yesBtn.getBoundingClientRect();
 
-    const padding = 15;
+            const buttonHeight =
+                55;
 
-    return !(
-        x + width <
-        yesRect.left - padding ||
 
-        x >
-        yesRect.right + padding ||
+            /*
+                Ekran kenarından
+                güvenli mesafe.
+            */
 
-        y + height <
-        yesRect.top - padding ||
+            const margin =
+                18;
 
-        y >
-        yesRect.bottom + padding
-    );
-}
 
-        /* =========================
+            /*
+                Ekranda kalabileceği
+                maksimum koordinatlar.
+            */
+
+            const maxX =
+                Math.max(
+                    margin,
+                    window.innerWidth -
+                    buttonWidth -
+                    margin
+                );
+
+
+            const maxY =
+                Math.max(
+                    margin,
+                    window.innerHeight -
+                    buttonHeight -
+                    margin
+                );
+
+
+            /*
+                Rastgele konum.
+            */
+
+            let x =
+                margin +
+                Math.random() *
+                Math.max(
+                    1,
+                    maxX - margin
+                );
+
+
+            let y =
+                margin +
+                Math.random() *
+                Math.max(
+                    1,
+                    maxY - margin
+                );
+
+
+            /*
+                Çok önemli:
+                Ekranın dışına çıkmayı
+                kesin olarak engelle.
+            */
+
+            x =
+                Math.max(
+                    margin,
+                    Math.min(
+                        x,
+                        window.innerWidth -
+                        buttonWidth -
+                        margin
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    margin,
+                    Math.min(
+                        y,
+                        window.innerHeight -
+                        buttonHeight -
+                        margin
+                    )
+                );
+
+
+            noBtn.style.left =
+                x + "px";
+
+
+            noBtn.style.top =
+                y + "px";
+        }
+
+
+
+        /* ==================================
            ARKA PLAN KALPLERİ
-        ========================== */
+        ================================== */
 
         function createFloatingHeart() {
 
             const heart =
-                document.createElement("div");
+                document.createElement(
+                    "div"
+                );
 
 
             heart.className =
@@ -1097,11 +1202,13 @@
 
 
             const hearts = [
+
                 "❤️",
                 "💗",
                 "💕",
                 "💖",
                 "💓"
+
             ];
 
 
@@ -1115,21 +1222,25 @@
 
 
             heart.style.left =
-                Math.random() * 100 + "vw";
+                Math.random() *
+                100 +
+                "vw";
 
 
             heart.style.fontSize =
                 (
                     15 +
                     Math.random() * 25
-                ) + "px";
+                ) +
+                "px";
 
 
             heart.style.animationDuration =
                 (
                     6 +
                     Math.random() * 7
-                ) + "s";
+                ) +
+                "s";
 
 
             document.body.appendChild(
@@ -1152,9 +1263,9 @@
 
 
 
-        /* =========================
+        /* ==================================
            KONFETİ
-        ========================== */
+        ================================== */
 
         function createConfetti() {
 
@@ -1172,7 +1283,7 @@
 
             for (
                 let i = 0;
-                i < 120;
+                i < 140;
                 i++
             ) {
 
@@ -1187,7 +1298,8 @@
 
 
                 confetti.style.left =
-                    Math.random() * 100 +
+                    Math.random() *
+                    100 +
                     "vw";
 
 
@@ -1204,19 +1316,15 @@
                     (
                         2 +
                         Math.random() * 3
-                    ) + "s";
+                    ) +
+                    "s";
 
 
                 confetti.style.animationDelay =
                     (
                         Math.random() * 0.5
-                    ) + "s";
-
-
-                confetti.style.transform =
-                    `rotate(${
-                        Math.random() * 360
-                    }deg)`;
+                    ) +
+                    "s";
 
 
                 document.body.appendChild(
@@ -1234,9 +1342,9 @@
 
 
 
-        /* =========================
+        /* ==================================
            KALP PATLAMASI
-        ========================== */
+        ================================== */
 
         function createHeartExplosion() {
 
@@ -1255,7 +1363,7 @@
 
             for (
                 let i = 0;
-                i < 40;
+                i < 45;
                 i++
             ) {
 
@@ -1314,7 +1422,8 @@
                     (
                         18 +
                         Math.random() * 25
-                    ) + "px";
+                    ) +
+                    "px";
 
 
                 document.body.appendChild(
@@ -1332,23 +1441,25 @@
 
 
 
-        /* =========================
-           PARILTI EFEKTİ
-        ========================== */
+        /* ==================================
+           PARILTI
+        ================================== */
 
         function createSparkles() {
 
             const symbols = [
+
                 "✨",
                 "⭐",
                 "💫",
                 "🌟"
+
             ];
 
 
             for (
                 let i = 0;
-                i < 25;
+                i < 30;
                 i++
             ) {
 
@@ -1372,12 +1483,14 @@
 
 
                 sparkle.style.left =
-                    Math.random() * 100 +
+                    Math.random() *
+                    100 +
                     "vw";
 
 
                 sparkle.style.top =
-                    Math.random() * 100 +
+                    Math.random() *
+                    100 +
                     "vh";
 
 
@@ -1396,9 +1509,9 @@
 
 
 
-        /* =========================
-           HAYIR BUTONU
-        ========================== */
+        /* ==================================
+           HAYIR TIKLAMASI
+        ================================== */
 
         noBtn.addEventListener(
             "click",
@@ -1411,33 +1524,32 @@
 
 
                 /*
-                    Soruyu değiştir
+                    Önce soru değişir.
                 */
 
                 changeQuestionText();
 
 
                 /*
-                    Evet'i büyüt
+                    Evet büyür.
                 */
 
                 growYesButton();
 
 
                 /*
-                    Hayır'ı kaçır
+                    Hayır kaçar.
                 */
 
                 moveNoButton();
-
             }
         );
 
 
 
-        /* =========================
-           EVET BUTONU
-        ========================== */
+        /* ==================================
+           EVET TIKLAMASI
+        ================================== */
 
         yesBtn.addEventListener(
             "click",
@@ -1482,6 +1594,7 @@
                 questionPage.classList.add(
                     "hidden"
                 );
+
 
                 messagePage.classList.remove(
                     "hidden"
@@ -1601,7 +1714,6 @@
 
                                     "Accept":
                                         "application/json"
-
                                 },
 
                                 body:
@@ -1649,8 +1761,6 @@
 
             }
         );
-
-
 
     </script>
 
