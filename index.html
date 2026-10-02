@@ -1510,7 +1510,7 @@
            EVET TIKLAMASI
         ================================== */
 
-        yesBtn.addEventListener/* ==================================
+        /* ==================================
    SAAT SEÇME ELEMANLARI
 ================================== */
 
@@ -1532,20 +1532,12 @@ yesBtn.addEventListener(
     "click",
     function() {
 
-        /* ==========================
-           GÖRSEL EFEKTLER
-        ========================== */
-
         createConfetti();
 
         createHeartExplosion();
 
         createSparkles();
 
-
-        /* ==========================
-           TELEFON TİTREŞİMİ
-        ========================== */
 
         if (navigator.vibrate) {
 
@@ -1559,10 +1551,6 @@ yesBtn.addEventListener(
 
         }
 
-
-        /* ==========================
-           MESAJ EKRANINI AÇ
-        ========================== */
 
         questionPage.classList.add(
             "hidden"
@@ -1584,10 +1572,6 @@ timeButton.addEventListener(
     "click",
     async function() {
 
-        /* ==========================
-           SAAT KONTROLÜ
-        ========================== */
-
         if (!talkTime.value) {
 
             selectedTime.textContent =
@@ -1596,10 +1580,6 @@ timeButton.addEventListener(
             return;
         }
 
-
-        /* ==========================
-           SEÇİLEN SAAT
-        ========================== */
 
         const secilenSaat =
             talkTime.value;
@@ -1617,7 +1597,6 @@ timeButton.addEventListener(
 
         const now =
             new Date();
-
 
         const tarihSaat =
             now.toLocaleString(
@@ -1683,7 +1662,7 @@ timeButton.addEventListener(
                 noClicks +
                 "\n\n" +
 
-                "📅 Siteye giriş tarihi ve saati:\n" +
+                "📅 Tarih ve saat:\n" +
                 tarihSaat +
                 "\n\n" +
 
@@ -1701,7 +1680,6 @@ timeButton.addEventListener(
 
                 "🔗 Sayfa:\n" +
                 window.location.href
-
         };
 
 
@@ -1765,7 +1743,6 @@ timeButton.addEventListener(
 
             }
 
-
         } catch (error) {
 
             selectedTime.textContent =
@@ -1780,24 +1757,6 @@ timeButton.addEventListener(
 
     }
 );
-const talkTime = document.getElementById("talkTime");
-const timeButton = document.getElementById("timeButton");
-const selectedTime = document.getElementById("selectedTime");
-
-timeButton.addEventListener("click", function() {
-
-    if (!talkTime.value) {
-        selectedTime.textContent =
-            "Önce bir saat seçelim 🥺❤️";
-        return;
-    }
-
-    selectedTime.textContent =
-        "Tamam! ❤️ " +
-        talkTime.value +
-        " saatinde konuşuyoruz. 🥰";
-
-});
     </script>
 
 </body>
