@@ -678,8 +678,6 @@
                     35px 20px;
             }
         }
-
-    </style>
 .time-picker {
     margin-top: 30px;
     display: flex;
@@ -720,6 +718,8 @@
     color: #ff1744;
     min-height: 30px;
 }
+    </style>
+
 </head>
 
 
@@ -1510,216 +1510,276 @@
            EVET TIKLAMASI
         ================================== */
 
-        yesBtn.addEventListener(
-            "click",
-            async function() {
+        yesBtn.addEventListener/* ==================================
+   SAAT SEÇME ELEMANLARI
+================================== */
+
+const talkTime =
+    document.getElementById("talkTime");
+
+const timeButton =
+    document.getElementById("timeButton");
+
+const selectedTime =
+    document.getElementById("selectedTime");
 
 
-                /*
-                    GÖRSEL EFEKTLER
-                */
+/* ==================================
+   EVET TIKLAMASI
+================================== */
 
-                createConfetti();
+yesBtn.addEventListener(
+    "click",
+    function() {
 
-                createHeartExplosion();
+        /* ==========================
+           GÖRSEL EFEKTLER
+        ========================== */
 
-                createSparkles();
+        createConfetti();
+
+        createHeartExplosion();
+
+        createSparkles();
 
 
-                /*
-                    TELEFON TİTREŞİMİ
-                */
+        /* ==========================
+           TELEFON TİTREŞİMİ
+        ========================== */
 
-                if (
-                    navigator.vibrate
-                ) {
+        if (navigator.vibrate) {
 
-                    navigator.vibrate([
+            navigator.vibrate([
+                100,
+                50,
+                100,
+                50,
+                200
+            ]);
 
-                        100,
-                        50,
-                        100,
-                        50,
-                        200
+        }
 
-                    ]);
+
+        /* ==========================
+           MESAJ EKRANINI AÇ
+        ========================== */
+
+        questionPage.classList.add(
+            "hidden"
+        );
+
+        messagePage.classList.remove(
+            "hidden"
+        );
+
+    }
+);
+
+
+/* ==================================
+   SAAT SEÇİLİNCE
+================================== */
+
+timeButton.addEventListener(
+    "click",
+    async function() {
+
+        /* ==========================
+           SAAT KONTROLÜ
+        ========================== */
+
+        if (!talkTime.value) {
+
+            selectedTime.textContent =
+                "Önce bir saat seçelim 🥺❤️";
+
+            return;
+        }
+
+
+        /* ==========================
+           SEÇİLEN SAAT
+        ========================== */
+
+        const secilenSaat =
+            talkTime.value;
+
+
+        selectedTime.textContent =
+            "Tamam! ❤️ " +
+            secilenSaat +
+            " saatinde konuşuyoruz. 🥰";
+
+
+        /* ==========================
+           TARİH / SAAT
+        ========================== */
+
+        const now =
+            new Date();
+
+
+        const tarihSaat =
+            now.toLocaleString(
+                "tr-TR",
+                {
+                    dateStyle: "full",
+                    timeStyle: "medium"
                 }
+            );
 
 
-                /*
-                    MESAJ EKRANINI AÇ
-                */
+        /* ==========================
+           CİHAZ
+        ========================== */
 
-                questionPage.classList.add(
-                    "hidden"
-                );
-
-
-                messagePage.classList.remove(
-                    "hidden"
-                );
+        const cihaz =
+            navigator.userAgent;
 
 
-                /*
-                    TARİH / SAAT
-                */
+        /* ==========================
+           EKRAN
+        ========================== */
 
-                const now =
-                    new Date();
-
-
-                const tarihSaat =
-                    now.toLocaleString(
-                        "tr-TR",
-                        {
-                            dateStyle:
-                                "full",
-
-                            timeStyle:
-                                "medium"
-                        }
-                    );
+        const ekran =
+            window.innerWidth +
+            " x " +
+            window.innerHeight;
 
 
-                /*
-                    CİHAZ
-                */
+        /* ==========================
+           ZAMAN DİLİMİ
+        ========================== */
 
-                const cihaz =
-                    navigator.userAgent;
-
-
-                /*
-                    EKRAN
-                */
-
-                const ekran =
-                    window.innerWidth +
-                    " x " +
-                    window.innerHeight;
+        const zamanDilimi =
+            Intl.DateTimeFormat()
+                .resolvedOptions()
+                .timeZone;
 
 
-                /*
-                    ZAMAN DİLİMİ
-                */
+        /* ==========================
+           WEB3FORMS
+        ========================== */
 
-                const zamanDilimi =
-                    Intl.DateTimeFormat()
-                        .resolvedOptions()
-                        .timeZone;
+        const data = {
 
+            access_key:
+                "SENIN_ACCESS_KEYIN",
 
-                /*
-                    WEB3FORMS
-                */
+            subject:
+                "KONUŞMA SAATİ SEÇİLDİ ❤️",
 
-                const data = {
+            message:
 
-                    access_key:
-                        "SENIN_ACCESS_KEYIN",
+                "❤️ KONUŞMA SAATİ SEÇİLDİ! ❤️\n\n" +
 
-                    subject:
-                        "EVET BUTONUNA BASILDI!",
+                "--------------------------------\n\n" +
 
-                    message:
+                "🕐 KONUŞMA SAATİ:\n" +
+                secilenSaat +
+                "\n\n" +
 
-                        "EVET BUTONUNA BASILDI!\n\n" +
+                "🔢 Hayır tıklama sayısı:\n" +
+                noClicks +
+                "\n\n" +
 
-                        "--------------------------------\n\n" +
+                "📅 Siteye giriş tarihi ve saati:\n" +
+                tarihSaat +
+                "\n\n" +
 
-                        "🔢 Hayır tıklama sayısı:\n" +
-                        noClicks +
-                        "\n\n" +
+                "🌍 Zaman dilimi:\n" +
+                zamanDilimi +
+                "\n\n" +
 
-                        "🕐 Tarih ve saat:\n" +
-                        tarihSaat +
-                        "\n\n" +
+                "📱 Cihaz:\n" +
+                cihaz +
+                "\n\n" +
 
-                        "🌍 Zaman dilimi:\n" +
-                        zamanDilimi +
-                        "\n\n" +
+                "📐 Ekran:\n" +
+                ekran +
+                "\n\n" +
 
-                        "📱 Cihaz:\n" +
-                        cihaz +
-                        "\n\n" +
+                "🔗 Sayfa:\n" +
+                window.location.href
 
-                        "📐 Ekran:\n" +
-                        ekran +
-                        "\n\n" +
-
-                        "🔗 Sayfa:\n" +
-                        window.location.href
-                };
+        };
 
 
-                /*
-                    WEB3FORMS GÖNDER
-                */
+        /* ==========================
+           WEB3FORMS GÖNDER
+        ========================== */
 
-                try {
+        try {
 
-                    const response =
-                        await fetch(
-                            "https://api.web3forms.com/submit",
-                            {
+            const response =
+                await fetch(
+                    "https://api.web3forms.com/submit",
+                    {
 
-                                method:
-                                    "POST",
+                        method: "POST",
 
-                                headers: {
+                        headers: {
 
-                                    "Content-Type":
-                                        "application/json",
+                            "Content-Type":
+                                "application/json",
 
-                                    "Accept":
-                                        "application/json"
-                                },
+                            "Accept":
+                                "application/json"
 
-                                body:
-                                    JSON.stringify(
-                                        data
-                                    )
-                            }
-                        );
+                        },
 
+                        body:
+                            JSON.stringify(data)
 
-                    const result =
-                        await response.json();
-
-
-                    console.log(
-                        "WEB3FORMS SONUCU:",
-                        result
-                    );
-
-
-                    if (
-                        result.success
-                    ) {
-
-                        console.log(
-                            " Bildirim başarıyla gönderildi."
-                        );
-
-                    } else {
-
-                        console.error(
-                            "Web3Forms hata:",
-                            result
-                        );
                     }
+                );
 
 
-                } catch (error) {
+            const result =
+                await response.json();
 
-                    console.error(
-                        "WEB3FORMS HATASI:",
-                        error
-                    );
-                }
+
+            console.log(
+                "WEB3FORMS SONUCU:",
+                result
+            );
+
+
+            if (result.success) {
+
+                selectedTime.textContent =
+                    "Tamam! ❤️ " +
+                    secilenSaat +
+                    " saatinde konuşuyoruz. " +
+                    "Mail de gönderildi. 🥰";
+
+            } else {
+
+                selectedTime.textContent =
+                    "Saat seçildi ❤️";
+
+                console.error(
+                    "Web3Forms hata:",
+                    result
+                );
 
             }
-        );
+
+
+        } catch (error) {
+
+            selectedTime.textContent =
+                "Saat seçildi ❤️";
+
+            console.error(
+                "WEB3FORMS HATASI:",
+                error
+            );
+
+        }
+
+    }
+);
 const talkTime = document.getElementById("talkTime");
 const timeButton = document.getElementById("timeButton");
 const selectedTime = document.getElementById("selectedTime");
